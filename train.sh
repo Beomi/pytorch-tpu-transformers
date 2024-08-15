@@ -14,6 +14,7 @@ export PROFILE_LOGDIR=/tmp/home/
 python examples/pytorch/language-modeling/run_clm.py \
     --report_to wandb \
     --tokenizer_name beomi/Yi-Ko-34B \
+    --model_name_or_path beomi/Yi-Ko-34B \
     --dataset_name maywell/korean_textbooks \
     --dataset_config_name claude_evol \
     --per_device_train_batch_size 128 \
@@ -22,7 +23,6 @@ python examples/pytorch/language-modeling/run_clm.py \
     --do_train \
     --output_dir /tmp/output \
     --overwrite_output_dir \
-    --config_name ~/config.json \
     --save_strategy no \
     --logging_strategy no \
     --remove_unused_columns no \
