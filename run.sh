@@ -1,1 +1,5 @@
-tssha v4-256 'bash train.sh'
+tssha() {
+    gcloud compute tpus tpu-vm ssh $1 --zone us-central2-b --worker=all --command $2
+}
+
+tssha v4-256 'screen -dmS trainer bash -c "cd pytorch-tpu-transformers && git pull &&pytorch-tpu-transformers train.sh"'
