@@ -11,6 +11,8 @@ export PROFILE_STEP=3
 export PROFILE_DURATION_MS=20000
 export PROFILE_LOGDIR=/tmp/home/
 
+export HF_HUB_ENABLE_HF_TRANSFER=1
+
 python examples/pytorch/language-modeling/run_clm.py \
     --report_to wandb \
     --tokenizer_name beomi/Yi-Ko-34B \
