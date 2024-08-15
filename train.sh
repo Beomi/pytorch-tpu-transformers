@@ -12,11 +12,12 @@ export PROFILE_DURATION_MS=20000
 export PROFILE_LOGDIR=/tmp/home/
 
 python examples/pytorch/language-modeling/run_clm.py \
-    --tokenizer_name hf-internal-testing/llama-tokenizer \
-    --dataset_name wikitext \
-    --dataset_config_name wikitext-2-raw-v1 \
-    --per_device_train_batch_size 96 \
-    --per_device_eval_batch_size 8 \
+    --report_to wandb \
+    --tokenizer_name beomi/Yi-Ko-34B \
+    --dataset_name maywell/korean_textbooks \
+    --dataset_config_name claude_evol \
+    --per_device_train_batch_size 128 \
+    --per_device_eval_batch_size 128 \
     --num_train_epochs 1 \
     --do_train \
     --output_dir /tmp/output \
