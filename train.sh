@@ -33,4 +33,4 @@ python examples/pytorch/language-modeling/run_clm.py \
     --dataloader_drop_last yes \
     --block_size 2048 \
     --spmd_2d_sharding 1 \
-    --spmd_grad_chkpt >./logfile 2>&1
+    --spmd_grad_chkpt
