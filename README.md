@@ -17,8 +17,8 @@ pip3 install torch~=2.4.0 torch_xla[tpu]~=2.4.0 -f https://storage.googleapis.co
 '
 
 tssha v4-256 '
-git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
-cd transformers
+git clone https://github.com/Beomi/pytorch-tpu-transformers
+cd pytorch-tpu-transformers && git pull
 pip3 install git+file://$PWD
 pip3 install datasets accelerate evaluate scikit-learn'
 
@@ -38,7 +38,7 @@ export PROFILE_STEP=3
 export PROFILE_DURATION_MS=20000
 export PROFILE_LOGDIR=/tmp/home/
 
-cd transformers
+cd pytorch-tpu-transformers
 python examples/pytorch/language-modeling/run_clm.py \
  --tokenizer_name hf-internal-testing/llama-tokenizer \
  --dataset_name wikitext \
