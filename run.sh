@@ -3,13 +3,13 @@ tssha() {
 }
 
 echo "[local] Killing TPU"
-tssha "sudo fuser -k /dev/accel0"
+tssha v4-256 "sudo fuser -k /dev/accel0"
 
 echo "[local] Removing TPU Lock"
-tssha "sudo rm -f /tmp/libtpu_lockfile"
+tssha v4-256 "sudo rm -f /tmp/libtpu_lockfile"
 
 echo "[local] Removing screens"
-tssha "killall screen"
+tssha v4-256 "killall screen"
 
 tssha v4-256 'screen -S trainer -X quit'
 tssha v4-256 'screen -dmSL trainer bash -c "cd pytorch-tpu-transformers && git pull && ./train.sh"'
