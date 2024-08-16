@@ -1,5 +1,4 @@
-# export PJRT_DEVICE=TPU
-export PJRT_DEVICE=TPU_C_API
+export PJRT_DEVICE=TPU
 export XLA_USE_SPMD=1
 # export XLA_USE_BF16=1
 export XLA_IR_DEBUG=1
