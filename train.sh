@@ -6,10 +6,10 @@ export XLA_HLO_DEBUG=1
 
 export LIBTPU_INIT_ARGS="--xla_enable_async_collective_permute=true --xla_tpu_enable_async_collective_fusion_multiple_steps=true --xla_tpu_enable_async_collective_fusion=true --xla_tpu_overlap_compute_collective_tc=true --xla_enable_async_all_gather=true --xla_jf_spmd_threshold_for_windowed_einsum_mib=0"
 
-export PROFILE_EPOCH=0
-export PROFILE_STEP=3
-export PROFILE_DURATION_MS=20000
-export PROFILE_LOGDIR=/tmp/home/
+# export PROFILE_EPOCH=0
+# export PROFILE_STEP=3
+# export PROFILE_DURATION_MS=20000
+# export PROFILE_LOGDIR=/tmp/home/
 
 export HF_HUB_ENABLE_HF_TRANSFER=0
 
