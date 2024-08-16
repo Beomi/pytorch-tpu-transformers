@@ -1,6 +1,6 @@
 export PJRT_DEVICE=TPU
 export XLA_USE_SPMD=1
-export XLA_USE_BF16=1
+# export XLA_USE_BF16=1
 export XLA_IR_DEBUG=1
 export XLA_HLO_DEBUG=1
 
@@ -37,6 +37,5 @@ python examples/pytorch/language-modeling/run_clm.py \
     --preprocessing_num_workers 32 \
     --spmd_2d_sharding 8 \
     --spmd_debug \
-    --spmd_defer_init \
-    --spmd_dcn_parallelism 4
+    --spmd_defer_init
 # --spmd_grad_chkpt
