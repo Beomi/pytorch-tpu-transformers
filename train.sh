@@ -25,7 +25,7 @@ python examples/pytorch/language-modeling/run_clm.py \
     --per_device_eval_batch_size 128 \
     --num_train_epochs 1 \
     --do_train \
-    --output_dir /mnt/nfs1/$MODEL_NAME/trained \
+    --output_dir /mnt/nfs_share/$MODEL_NAME/trained \
     --overwrite_output_dir \
     --save_strategy epoch \
     --logging_strategy steps \
