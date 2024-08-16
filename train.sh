@@ -21,8 +21,8 @@ python examples/pytorch/language-modeling/run_clm.py \
     --model_name_or_path $MODEL_NAME \
     --dataset_name maywell/korean_textbooks \
     --dataset_config_name claude_evol \
-    --per_device_train_batch_size 1 \
-    --per_device_eval_batch_size 1 \
+    --per_device_train_batch_size 16 \
+    --per_device_eval_batch_size 16 \
     --num_train_epochs 1 \
     --do_train \
     --output_dir /mnt/nfs_share/$MODEL_NAME/trained \
@@ -35,5 +35,5 @@ python examples/pytorch/language-modeling/run_clm.py \
     --dataloader_drop_last yes \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 1
-# --spmd_grad_chkpt
+    --spmd_2d_sharding 1 \
+    --spmd_grad_chkpt
