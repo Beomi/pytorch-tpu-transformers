@@ -28,11 +28,11 @@ python examples/pytorch/language-modeling/run_clm.py \
     --output_dir /mnt/nfs1/$MODEL_NAME/trained \
     --overwrite_output_dir \
     --save_strategy epoch \
-    --logging_strategy no \
+    --logging_strategy steps \
     --remove_unused_columns no \
     --optim adafactor \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --block_size 2048 \
-    --spmd_2d_sharding 1 \
-    --spmd_grad_chkpt
+    --spmd_2d_sharding 1
+# --spmd_grad_chkpt
