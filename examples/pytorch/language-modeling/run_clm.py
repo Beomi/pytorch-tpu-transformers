@@ -576,6 +576,7 @@ def main():
             dcn_mesh_shape=dcn_mesh_shape,
             axis_names=("dcn", "data", "model"),
         )
+        print("spmd_mesh:", spmd_mesh)
         xs.set_global_mesh(spmd_mesh)
     elif xr.device_type() == "CUDA":
         data_axis = num_devices // model_axis
