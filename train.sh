@@ -1,9 +1,11 @@
-export PJRT_DEVICE=TPU
+# export PJRT_DEVICE=TPU
+export PJRT_DEVICE=TPU_C_API
 export XLA_USE_SPMD=1
 # export XLA_USE_BF16=1
 export XLA_IR_DEBUG=1
 export XLA_HLO_DEBUG=1
-export USE_TORCH=1
+export USE_TORCH=ON
+export PT_XLA_DEBUG=1
 
 export LIBTPU_INIT_ARGS="--xla_enable_async_collective_permute=true --xla_tpu_enable_async_collective_fusion_multiple_steps=true --xla_tpu_enable_async_collective_fusion=true --xla_tpu_overlap_compute_collective_tc=true --xla_enable_async_all_gather=true --xla_jf_spmd_threshold_for_windowed_einsum_mib=0"
 
@@ -36,7 +38,7 @@ python examples/pytorch/language-modeling/run_clm.py \
     --dataloader_drop_last yes \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 128
+    --spmd_2d_sharding 4
 # --spmd_debug \
 # --spmd_defer_init
 # --spmd_grad_chkpt
