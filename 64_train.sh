@@ -36,4 +36,6 @@ export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
     --block_size 2048 \
     --preprocessing_num_workers 32 \
     --spmd_2d_sharding 1 \
-    --spmd_grad_chkpt
+    --spmd_grad_chkpt \
+    --spmd_dcn_parallelism 4 \
+    --spmd_debug
