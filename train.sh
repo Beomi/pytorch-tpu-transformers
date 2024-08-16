@@ -21,7 +21,7 @@ python examples/pytorch/language-modeling/run_clm.py \
     --model_name_or_path $MODEL_NAME \
     --dataset_name maywell/korean_textbooks \
     --dataset_config_name claude_evol \
-    --per_device_train_batch_size 128 \
+    --per_device_train_batch_size 1024 \
     --per_device_eval_batch_size 128 \
     --num_train_epochs 1 \
     --do_train \
@@ -36,5 +36,6 @@ python examples/pytorch/language-modeling/run_clm.py \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
     --spmd_defer_init \
-    --spmd_2d_sharding 1
+    --spmd_2d_sharding 1 \
+    --include_num_input_tokens_seen
 # --spmd_grad_chkpt
