@@ -29,13 +29,13 @@ python examples/pytorch/language-modeling/run_clm.py \
     --overwrite_output_dir \
     --save_strategy epoch \
     --logging_strategy steps \
-    --remove_unused_columns no \
+    --remove_unused_columns yes \
     --optim adafactor \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 128 \
-    --spmd_debug \
-    --spmd_defer_init
+    --spmd_2d_sharding 128
+# --spmd_debug \
+# --spmd_defer_init
 # --spmd_grad_chkpt
