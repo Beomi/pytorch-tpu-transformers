@@ -1,5 +1,5 @@
 tssha() {
-    gcloud compute tpus tpu-vm ssh "$1" --zone us-central2-b --worker=all --command "$2"
+    gcloud compute tpus tpu-vm ssh "beomi@$1" --zone us-central2-b --worker=all --command "$2"
 }
 
 echo "[local] Killing TPU"

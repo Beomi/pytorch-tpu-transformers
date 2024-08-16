@@ -22,8 +22,8 @@ python examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name hf-internal-testing/llama-tokenizer \
     --dataset_name wikitext \
     --dataset_config_name wikitext-2-raw-v1 \
-    --per_device_train_batch_size 96 \
-    --per_device_eval_batch_size 8 \
+    --per_device_train_batch_size 256 \
+    --per_device_eval_batch_size 256 \
     --num_train_epochs 1 \
     --do_train \
     --output_dir /tmp/output \
@@ -36,5 +36,5 @@ python examples/pytorch/language-modeling/run_clm.py \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --block_size 2048 \
-    --spmd_2d_sharding 1 \
+    --spmd_2d_sharding 4 \
     --spmd_grad_chkpt
