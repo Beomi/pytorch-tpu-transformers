@@ -13,19 +13,21 @@ export PROFILE_LOGDIR=/tmp/home/
 
 export HF_HUB_ENABLE_HF_TRANSFER=0
 
+export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
+
 python examples/pytorch/language-modeling/run_clm.py \
     --report_to wandb \
-    --tokenizer_name beomi/Yi-Ko-34B \
-    --model_name_or_path beomi/Yi-Ko-34B \
+    --tokenizer_name $MODEL_NAME \
+    --model_name_or_path $MODEL_NAME \
     --dataset_name maywell/korean_textbooks \
     --dataset_config_name claude_evol \
     --per_device_train_batch_size 128 \
     --per_device_eval_batch_size 128 \
     --num_train_epochs 1 \
     --do_train \
-    --output_dir /tmp/output \
+    --output_dir /mnt/nfs1/$MODEL_NAME/trained \
     --overwrite_output_dir \
-    --save_strategy no \
+    --save_strategy epoch \
     --logging_strategy no \
     --remove_unused_columns no \
     --optim adafactor \
