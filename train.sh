@@ -37,7 +37,7 @@ python examples/pytorch/language-modeling/run_clm.py \
     --dataloader_drop_last yes \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 4
-# --spmd_debug \
+    --spmd_2d_sharding 4 \
+    --spmd_debug
 # --spmd_defer_init
 # --spmd_grad_chkpt
