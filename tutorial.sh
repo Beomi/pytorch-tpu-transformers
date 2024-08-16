@@ -36,5 +36,5 @@ python examples/pytorch/language-modeling/run_clm.py \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --block_size 2048 \
-    --spmd_2d_sharding 4 \
+    --spmd_2d_sharding 1 \
     --spmd_grad_chkpt
