@@ -1,6 +1,6 @@
 export PJRT_DEVICE=TPU
-export XLA_USE_SPMD=1
-export XLA_USE_BF16=1
+# export XLA_USE_SPMD=1
+# export XLA_USE_BF16=1
 export XLA_IR_DEBUG=1
 export XLA_HLO_DEBUG=1
 
