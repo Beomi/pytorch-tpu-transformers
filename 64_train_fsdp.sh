@@ -16,7 +16,6 @@ export HF_HUB_ENABLE_HF_TRANSFER=0
 export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
 
 /home/beomi/venv/bin/python -u examples/pytorch/xla_spawn.py \
-    --multiple_device True \
     examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name $MODEL_NAME \
     --model_name_or_path $MODEL_NAME \

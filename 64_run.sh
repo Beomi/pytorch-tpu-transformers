@@ -13,4 +13,4 @@ tssha v4-64 "killall screen"
 
 tssha v4-64 'screen -S trainer -X quit'
 # tssha v4-64 'screen -dmSL trainer bash -c "cd pytorch-tpu-transformers && git pull && ./64_train.sh"'
-tssha v4-64 'cd pytorch-tpu-transformers && git pull && ./64_train.sh'
+tssha v4-64 'cd pytorch-tpu-transformers && git pull && ./64_train_fsdp.sh'
