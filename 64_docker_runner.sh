@@ -20,5 +20,5 @@ DOCKER_CMD='python -u \
     --spmd_defer_init \
 '
 
-echo "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
-# tssha v4-64 'sudo docker run --net=host --privileged -t -d tpuvm "$DOCKER_CMD"'
+# echo "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
+tssha v4-64 "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
