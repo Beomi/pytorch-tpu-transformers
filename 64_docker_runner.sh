@@ -7,7 +7,7 @@ DOCKER_CMD='python -u \
     --per_device_train_batch_size 256 \
     --num_train_epochs 3 \
     --do_train \
-    --output_dir /mnt/nfs_share/output_dir/beomi/Solar-Ko-Recovery-11B/ \
+    --output_dir /root/files/beomi/Solar-Ko-Recovery-11B/ \
     --overwrite_output_dir \
     --save_strategy epoch \
     --logging_strategy steps \
@@ -23,4 +23,7 @@ tssha() {
     gcloud compute tpus tpu-vm ssh "$1" --zone us-central2-b --worker=all --command "$2"
 }
 # echo "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
-tssha v4-64 "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
+tssha v4-64 "sudo docker run \
+-v /mnt/nfs_share/docker-cache:/root/.cache \
+-v /mnt/nfs_share/docker-file:/root/files \
+--net=host --privileged -t -d tpuvm $DOCKER_CMD"
