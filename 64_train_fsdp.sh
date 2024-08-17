@@ -15,32 +15,21 @@ export HF_HUB_ENABLE_HF_TRANSFER=0
 
 export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
 
-/home/beomi/venv/bin/python examples/pytorch/language-modeling/run_clm.py \
-    --report_to wandb \
+/home/beomi/venv/bin/python -u examples/pytorch/xla_spawn.py \
+    --multiple_device True \
+    examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name $MODEL_NAME \
     --model_name_or_path $MODEL_NAME \
     --dataset_name maywell/korean_textbooks \
     --dataset_config_name claude_evol \
-    --per_device_train_batch_size 16 \
-    --per_device_eval_batch_size 16 \
-    --num_train_epochs 1 \
+    --per_device_train_batch_size 32 \
+    --num_train_epochs 2 \
     --do_train \
-    --output_dir /mnt/nfs_share/$MODEL_NAME/trained \
+    --output_dir /tmp/output \
     --overwrite_output_dir \
-    --save_strategy epoch \
+    --config_name ~/config.json \
+    --save_strategy no \
     --logging_strategy steps \
     --logging_steps 1 \
-    --remove_unused_columns no \
     --optim adafactor \
-    --torch_dtype bfloat16 \
-    --dataloader_drop_last yes \
-    --block_size 2048 \
-    --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 4 \
-    --spmd_grad_chkpt \
-    --spmd_dcn_parallelism 1 \
-    --spmd_debug
-
-# spmd_dcn_parallelism == 1 since I'm using 1 Data Center Network (DCN) device
-# spmd_2d_sharding == Model parallelism
-# HF treats per_device_train_batch_size as global batch size (SPMD)
+    --block_size 1024
