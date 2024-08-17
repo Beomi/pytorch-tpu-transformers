@@ -35,7 +35,11 @@ export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
     --dataloader_drop_last yes \
     --block_size 2048 \
     --preprocessing_num_workers 32 \
-    --spmd_2d_sharding 1 \
+    --spmd_2d_sharding 4 \
     --spmd_grad_chkpt \
-    --spmd_dcn_parallelism 4 \
+    --spmd_dcn_parallelism 1 \
     --spmd_debug
+
+# spmd_dcn_parallelism == 1 since I'm using 1 Data Center Network (DCN) device
+# spmd_2d_sharding == Model parallelism
+# HF treats per_device_train_batch_size as global batch size (SPMD)
