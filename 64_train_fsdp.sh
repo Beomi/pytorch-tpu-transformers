@@ -26,7 +26,6 @@ export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
     --do_train \
     --output_dir /tmp/output \
     --overwrite_output_dir \
-    --config_name ~/config.json \
     --save_strategy no \
     --logging_strategy steps \
     --logging_steps 1 \
