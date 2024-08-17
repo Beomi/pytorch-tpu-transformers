@@ -10,6 +10,7 @@ else
     # Kill each container found
     for id in $container_ids; do
         echo "Killing container with ID: $id"
-        sudo docker kill $id
+        sudo docker stop $id
+        sudo docker rm $id
     done
 fi
