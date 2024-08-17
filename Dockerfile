@@ -6,6 +6,10 @@ ARG train_config=config.json
 ARG global_batch_size=256
 ARG libtpu_init_args=""
 ARG WANDB_API_KEY=""
+# Define a build-time argument with a default value
+ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
+# Use the build-time argument to set the environment variable
+ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP:-$WANDB_RUN_GROUP_DEFAULT}"
 
 # Clone and install the SPMD-enabled fork of HF transformers
 RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
@@ -21,6 +25,7 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 
 RUN pip install wandb
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
+ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
