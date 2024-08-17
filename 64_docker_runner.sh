@@ -19,6 +19,8 @@ DOCKER_CMD='python -u \
     --spmd_grad_chkpt \
     --spmd_defer_init \
 '
-
+tssha() {
+    gcloud compute tpus tpu-vm ssh "$1" --zone us-central2-b --worker=all --command "$2"
+}
 # echo "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
 tssha v4-64 "sudo docker run --net=host --privileged -t -d tpuvm $DOCKER_CMD"
