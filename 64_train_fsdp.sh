@@ -31,4 +31,5 @@ export MODEL_NAME='beomi/Solar-Ko-Recovery-11B'
     --logging_steps 1 \
     --optim adafactor \
     --block_size 1024 \
-    --torch_dtype bfloat16
+    --torch_dtype bfloat16 \
+    --spmd_fsdp_sharding
