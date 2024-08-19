@@ -49,4 +49,5 @@ CMD python -u \
     --dataloader_drop_last yes \
     --spmd_grad_chkpt \
     --warmup_steps 200 \
+    --bf16 \
     ${SPMD_SHARDING_FLAG}
