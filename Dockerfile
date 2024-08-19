@@ -12,8 +12,12 @@ ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP:-$WANDB_RUN_GROUP_DEFAULT}"
 
 # Clone and install the SPMD-enabled fork of HF transformers
-RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
-RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
+# RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
+# RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
+RUN pip install datasets accelerate evaluate scikit-learn wandb
+RUN git clone https://github.com/Beomi/pytorch-tpu-transformers.git
+WORKDIR /pytorch-tpu-transformers
+RUN pip install -e .
 
 # Copy the config file from the build context
 COPY ${train_config} /config.json
@@ -23,13 +27,14 @@ ENV SPMD_SHARDING_FLAG="${spmd_sharding_flag}"
 ENV GLOBAL_BATCH_SIZE="${global_batch_size}"
 ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 
-RUN pip install wandb
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
+WORKDIR /
+
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
-    /transformers/examples/pytorch/language-modeling/run_clm.py \
+    /pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
     --dataset_name maywell/korean_textbooks \
