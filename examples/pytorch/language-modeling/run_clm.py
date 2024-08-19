@@ -897,6 +897,12 @@ def main():
         ),
     )
 
+    # Test model saving
+    if training_args.do_train:
+        print("Saving model before training")
+        trainer.save_model()
+        print("Model saved")
+
     # Training
     if training_args.do_train:
         checkpoint = None
