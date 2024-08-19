@@ -65,6 +65,9 @@ import torch_xla.distributed.spmd as spmd
 # Enable SPMD mode execution
 xr.use_spmd()
 
+# Enable compile cache
+xr.initialize_compile_cache("/home/beomi/tpu_cache", readonly=False)
+
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.40.0.dev0")
