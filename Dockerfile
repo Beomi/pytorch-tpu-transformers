@@ -23,7 +23,8 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
-RUN wget https://gist.githubusercontent.com/Beomi/e4e9a80aa69d72a5d8da5fe689f9430f/raw/2d7c21591e6befdfe09e487b4fc18cdb04a28480/run_clm_xla.py
+ADD https://gist.githubusercontent.com/Beomi/e4e9a80aa69d72a5d8da5fe689f9430f/raw/2d7c21591e6befdfe09e487b4fc18cdb04a28480/run_clm_xla.py \
+    run_clm_xla.py
 
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
