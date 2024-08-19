@@ -23,7 +23,7 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
-COPY pytorch-tpu-transformers/examples/pytorch/run_clm.py \
+COPY pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
     run_clm.py
 
 # Run the training using the copied config file and specified sharding strategy
