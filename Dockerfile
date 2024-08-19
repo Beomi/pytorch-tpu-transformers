@@ -3,7 +3,7 @@ FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:nightly_3.8_tpuv
 # Allow overriding some training parameters at build time
 ARG spmd_sharding_flag="--spmd_2d_sharding 2"
 ARG train_config=config.json
-ARG global_batch_size=256
+ARG global_batch_size=128
 ARG libtpu_init_args=""
 ARG WANDB_API_KEY=""
 # Define a build-time argument with a default value
