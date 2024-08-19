@@ -47,5 +47,4 @@ CMD python -u \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --spmd_grad_chkpt \
-    --spmd_defer_init \
     ${SPMD_SHARDING_FLAG}
