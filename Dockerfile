@@ -28,7 +28,7 @@ ADD https://gist.githubusercontent.com/Beomi/e4e9a80aa69d72a5d8da5fe689f9430f/ra
 
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
-    run_clm_xla.py \
+    /run_clm_xla.py \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
     --dataset_name maywell/korean_textbooks \
