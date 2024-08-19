@@ -66,7 +66,7 @@ import torch_xla.distributed.spmd as spmd
 xr.use_spmd()
 
 # Enable compile cache
-xr.initialize_compile_cache("/root/files/tpu_cache", readonly=False)
+xr.initialize_cache("/root/files/tpu_cache", readonly=False)
 
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
