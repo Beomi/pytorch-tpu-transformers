@@ -2,7 +2,6 @@ FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:nightly_3.8_tpuv
 
 # Allow overriding some training parameters at build time
 ARG spmd_sharding_flag="--spmd_2d_sharding 2"
-ARG train_config=config.json
 ARG global_batch_size=128
 ARG libtpu_init_args=""
 ARG WANDB_API_KEY=""
@@ -12,15 +11,9 @@ ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP:-$WANDB_RUN_GROUP_DEFAULT}"
 
 # Clone and install the SPMD-enabled fork of HF transformers
-# RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
-# RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
 RUN pip install datasets accelerate evaluate scikit-learn wandb
-RUN git clone https://github.com/Beomi/pytorch-tpu-transformers.git
-WORKDIR /pytorch-tpu-transformers
-RUN pip install -e .
-
-# Copy the config file from the build context
-COPY ${train_config} /config.json
+RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
+RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
 
 # Copy relevant args to environment variables for use in CMD
 ENV SPMD_SHARDING_FLAG="${spmd_sharding_flag}"
@@ -30,11 +23,11 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
-WORKDIR /
+RUN wget https://gist.githubusercontent.com/Beomi/e4e9a80aa69d72a5d8da5fe689f9430f/raw/2d7c21591e6befdfe09e487b4fc18cdb04a28480/run_clm_xla.py
 
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
-    /pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
+    run_clm_xla.py \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
     --dataset_name maywell/korean_textbooks \
