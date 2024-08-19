@@ -39,7 +39,8 @@ CMD python -u \
     --do_train \
     --output_dir /root/files/beomi/Solar-Ko-Recovery-11B/ \
     --overwrite_output_dir \
-    --save_strategy epoch \
+    --save_strategy steps \
+    --save_steps 10 \
     --logging_strategy steps \
     --logging_steps 1 \
     --remove_unused_columns no \
@@ -47,4 +48,5 @@ CMD python -u \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --spmd_grad_chkpt \
+    --warmup_steps 200 \
     ${SPMD_SHARDING_FLAG}
