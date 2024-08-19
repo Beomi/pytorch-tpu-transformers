@@ -7,6 +7,7 @@ ARG libtpu_init_args=""
 ARG WANDB_API_KEY=""
 # Define a build-time argument with a default value
 ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
+
 # Use the build-time argument to set the environment variable
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP:-$WANDB_RUN_GROUP_DEFAULT}"
 
@@ -23,12 +24,14 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
 
-COPY pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
-    run_clm.py
+# this is a workaround for the issue with the cache in the docker build
+ARG DISABLE_CACHE
+
+RUN git clone https://github.com/Beomi/pytorch-tpu-transformers
 
 # Run the training using the copied config file and specified sharding strategy
 CMD python -u \
-    /run_clm.py \
+    /pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
     --dataset_name maywell/korean_textbooks \

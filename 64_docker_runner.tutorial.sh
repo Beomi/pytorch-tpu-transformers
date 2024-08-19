@@ -6,7 +6,7 @@ tssha v4-64 "cd pytorch-tpu-transformers/ && \
 git pull && \
 ./kill_tpu_docker.sh && \
 sudo docker system prune -f && \
-sudo docker build -t tpuvm . --build-arg WANDB_API_KEY=$WANDB_API_KEY"
+sudo docker build -t tpuvm . --build-arg WANDB_API_KEY=$WANDB_API_KEY --build-arg CUR_TIME=$(date +%s)"
 
 tssha v4-64 'sudo docker run \
 -v /mnt/nfs_share/docker-cache:/root/.cache \
