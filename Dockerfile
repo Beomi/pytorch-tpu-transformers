@@ -1,10 +1,6 @@
 # FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:r2.4.0_libtpu_3.10_tpuvm
 FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:nightly_3.10_tpuvm
 
-# Allow overriding some training parameters at build time
-ARG spmd_sharding_flag="--spmd_2d_sharding 4"
-ARG global_batch_size=32
-ARG libtpu_init_args=""
 ARG WANDB_API_KEY=""
 # Define a build-time argument with a default value
 ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
@@ -18,6 +14,12 @@ RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/tran
 RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
 
 # Copy relevant args to environment variables for use in CMD
+
+# Allow overriding some training parameters at build time
+ARG spmd_sharding_flag="--spmd_2d_sharding 8"
+ARG global_batch_size=32
+ARG libtpu_init_args=""
+
 ENV SPMD_SHARDING_FLAG="${spmd_sharding_flag}"
 ENV GLOBAL_BATCH_SIZE="${global_batch_size}"
 ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
