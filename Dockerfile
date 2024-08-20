@@ -1,4 +1,5 @@
-FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:r2.4.0_libtpu_3.10_tpuvm
+# FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:r2.4.0_libtpu_3.10_tpuvm
+FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:nightly_3.10_tpuvm
 
 # Allow overriding some training parameters at build time
 ARG spmd_sharding_flag="--spmd_2d_sharding 2"
