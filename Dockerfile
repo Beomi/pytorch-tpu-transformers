@@ -44,8 +44,7 @@ CMD python -u \
     --do_train \
     --output_dir /root/files/beomi/Solar-Ko-Recovery-11B/ \
     --overwrite_output_dir \
-    --save_strategy steps \
-    --save_steps 10 \
+    --save_strategy epoch \
     --logging_strategy steps \
     --logging_steps 1 \
     --remove_unused_columns no \
