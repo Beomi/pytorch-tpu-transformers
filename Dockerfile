@@ -39,21 +39,21 @@ CMD python -u \
     /pytorch-tpu-transformers/examples/pytorch/language-modeling/run_clm.py \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
-    --dataset_name maywell/korean_textbooks \
-    --dataset_config_name claude_evol \
+    --dataset_name beomi/kowikitext-qa-ref-detail-preview-textualized \
     --per_device_train_batch_size ${GLOBAL_BATCH_SIZE} \
-    --num_train_epochs 3 \
+    --num_train_epochs 1 \
     --do_train \
-    --output_dir /root/files/beomi/Solar-Ko-Recovery-11B/ \
+    --output_dir Solar-Ko-Recovery-11B-qa-ref-detail-preview-textualized \
     --overwrite_output_dir \
-    --save_strategy epoch \
+    --save_strategy steps \
+    --save_steps 10000 \
     --logging_strategy steps \
-    --logging_steps 1 \
+    --logging_steps 50 \
     --remove_unused_columns no \
     --optim adafactor \
     --torch_dtype bfloat16 \
     --dataloader_drop_last yes \
     --spmd_grad_chkpt \
-    --warmup_steps 200 \
+    --warmup_steps 1000 \
     --bf16 \
     ${SPMD_SHARDING_FLAG}
