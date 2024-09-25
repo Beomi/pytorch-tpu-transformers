@@ -12,8 +12,9 @@ ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP:-$WANDB_RUN_GROUP_DEFAULT}"
 # Clone and install the SPMD-enabled fork of HF transformers
 RUN pip install datasets accelerate evaluate scikit-learn wandb
 RUN git clone -b llama2-google-next-training https://github.com/pytorch-tpu/transformers.git
-RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn
+RUN pip install git+file:///transformers datasets accelerate evaluate scikit-learn hf_transfer
 
+ENV HF_HUB_ENABLE_HF_TRANSFER=1
 # Copy relevant args to environment variables for use in CMD
 
 # Allow overriding some training parameters at build time
