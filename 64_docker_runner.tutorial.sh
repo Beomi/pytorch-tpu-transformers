@@ -12,4 +12,5 @@ sudo docker build -t tpuvm . \
 --build-arg CUR_TIME=$(date +%s)"
 
 tssha v4-32a 'sudo docker run \
+-v /root/docker-cache:/root/.cache \
 --net=host --privileged -t -d tpuvm'

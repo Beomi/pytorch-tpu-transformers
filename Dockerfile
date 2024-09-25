@@ -41,6 +41,7 @@ CMD python -u \
     --tokenizer_name beomi/Solar-Ko-Recovery-11B \
     --model_name_or_path beomi/Solar-Ko-Recovery-11B \
     --dataset_name beomi/kowikitext-qa-ref-detail-preview-textualized \
+    --block_size 4096 \
     --per_device_train_batch_size ${GLOBAL_BATCH_SIZE} \
     --num_train_epochs 1 \
     --do_train \
