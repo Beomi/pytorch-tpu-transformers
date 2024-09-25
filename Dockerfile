@@ -2,6 +2,7 @@
 FROM us-central1-docker.pkg.dev/tpu-pytorch-releases/docker/xla:nightly_3.10_tpuvm
 
 ARG WANDB_API_KEY=""
+ARG HF_TOKEN=""
 # Define a build-time argument with a default value
 ARG WANDB_RUN_GROUP_DEFAULT="tpu-spmd-run-group"
 
@@ -16,7 +17,7 @@ RUN pip install git+file:///transformers datasets accelerate evaluate scikit-lea
 # Copy relevant args to environment variables for use in CMD
 
 # Allow overriding some training parameters at build time
-ARG spmd_sharding_flag="--spmd_2d_sharding 8"
+ARG spmd_sharding_flag="--spmd_2d_sharding 4"
 ARG global_batch_size=32
 ARG libtpu_init_args=""
 
@@ -26,6 +27,7 @@ ENV LIBTPU_INIT_ARGS="${libtpu_init_args}"
 
 ENV WANDB_API_KEY="${WANDB_API_KEY}"
 ENV WANDB_RUN_GROUP="${WANDB_RUN_GROUP}"
+ENV HF_TOKEN="${HF_TOKEN}"
 
 # this is a workaround for the issue with the cache in the docker build
 ARG DISABLE_CACHE
